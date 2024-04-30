@@ -23,6 +23,15 @@
    
 }
 
+.header-wrapper ul li button{
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 15px;
+    cursor: pointer;
+    
+   
+}
 .footer-wrapper{
     position: fixed;
     bottom: 0;
@@ -30,4 +39,11 @@
     text-align: center;
     font-size: 10px;
     background-color: aqua;
+}
+
+.input-error{
+    position: absolute;
+    padding: 8px;
+    color: red;
+    font-size: 13px;
 }
