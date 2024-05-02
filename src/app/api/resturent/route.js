@@ -13,8 +13,25 @@ export async function GET(){
 
 export async function POST(request){
     let payload = await request.json()
+    let result;
+    let success = false
     await mongoose.connect(connectionStr)
-    const resturent = new resturentSchema(payload)
-    const result = await resturent.save()
-    return NextResponse.json({result,success:true})
+    if(payload.login){
+        // use for login
+        result = await resturentSchema.findOne({email:payload.email,password:payload.password})
+        if(result){
+            success = true
+        }
+    }
+    else{
+        // use for signup
+        const resturent = new resturentSchema(payload)
+        result = await resturent.save()
+        if(result){
+            success = true
+        }
+    }
+    
+    
+    return NextResponse.json({result,success})
 }
